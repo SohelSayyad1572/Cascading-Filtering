@@ -1,0 +1,15 @@
+// this code help to change the data in table wheneve we select item form the second dropdown list
+
+var sel = Dropdown_CostCenter.getSelectedKey();
+
+Table_1.getDataSource().setDimensionFilter("CostCenter_1",sel);
+
+// whenever i select the another item then second dropdown should be display default (ALL) . for this , codee is here
+
+	if(Dropdown_CostCenter.getSelectedKey()!=="ALL"){
+		Table_1.getDataSource().setDimensionFilter("CostCenter_1",sel);
+	}else{ 
+		Table_1.getDataSource().removeDimensionFilter("CostCenter_1");
+		Table_1.getDataSource().setDimensionFilter("CostCenter_1",Dropdown_Company.getSelectedKey());
+	}
+	

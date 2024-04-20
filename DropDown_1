@@ -1,0 +1,21 @@
+ // here in this code if we select any item from company list then changes occours in the table and it clear the second dropdown list means costcenter
+
+var sel = Dropdown_Company.getSelectedKey();
+Dropdown_CostCenter.removeAllItems();
+
+Dropdown_CostCenter.addItem("ALL");        // after removing all item from second dropdown list "ALL" is added
+Dropdown_CostCenter.setSelectedKey("ALL"); 
+
+Table_1.getDataSource().removeDimensionFilter("CostCenter_1");
+Table_1.getDataSource().setDimensionFilter("Company_1",sel);
+
+
+// it cascading /// int this code we can select the second dropdown list after selecting 1st dropdown list but if we select item from the second dropdown list it doesn't work.  for that we have to write code for second dropdown onSelect
+
+
+ var selections = Table_1.getDataSource().getDataSelections({"Company_1":sel});
+
+for( var i=0;i<selections.length;i++){
+	var member = Table_1.getDataSource().getResultMember("CostCenter_1",selections[i]);
+	Dropdown_CostCenter.addItem(member.id,member.description);
+}

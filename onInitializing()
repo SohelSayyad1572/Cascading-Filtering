@@ -1,0 +1,14 @@
+// this code for company dropdown list only
+var CompanyDimension = Table_1.getDataSource().getMembers("Company_1");
+
+for(var i=0; i<CompanyDimension.length;i++){
+	Dropdown_Company.addItem(CompanyDimension[i].id,CompanyDimension[i].description);
+}
+
+
+// this code for CostCenter dropdown list only
+var CostCenterDimension = Table_1.getDataSource().getMembers("CostCenter_1");
+
+for(var j=0; i<CostCenterDimension.length;j++){
+	Dropdown_Company.addItem(CostCenterDimension[j].id,CostCenterDimension[j].description);
+}
